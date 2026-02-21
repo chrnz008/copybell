@@ -1,9 +1,14 @@
+; set the initial state
+TraySetIcon "assets/blue.ico",1,false
+
+;toggle after each copy
+blueToggle(){
+	TraySetIcon "assets/blue.ico",1,false
+}
+
 OnClipboardChange Copieed
 
 Copieed(DataType){
-	VirtualWidth := SysGet(78)
-	VirtualHeight := SysGet(79)
-	ToolTip "copied", VirtualWidth,VirtualHeight
-
-	SetTimer () => ToolTip(), -5000
+	TraySetIcon "assets/green.ico",1,false
+		SetTimer () => blueToggle() , -5000
 }
